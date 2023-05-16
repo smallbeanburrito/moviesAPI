@@ -1,3 +1,15 @@
+/*********************************************************************************
+*  WEB422 – Assignment 1
+*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  
+*  No part of this assignment has been copied manually or electronically from any other source
+*  (including web sites) or distributed to other students.
+* 
+*  Name: Keith Cao Student ID: 1443332211 Date: May 15, 2023 
+*  Cyclic Link: _______________________________________________________________
+*
+********************************************************************************/ 
+
+
 express = require('express');
 app = express();
 cors = require('cors');
@@ -34,7 +46,7 @@ app.get("/api/movies/:id", (req,res) => {
 });
 
 app.put("/api/movies/:id", (req,res) => {
-    db.updateMovieById(req.params.id, req.body)
+    db.updateMovieById(req.body, req.params.id)
     .then((data) => res.status(204).send(data))
     .catch(() => res.status(500).send("error updating movie"));
 });
