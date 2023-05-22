@@ -15,6 +15,7 @@ app = express();
 cors = require('cors');
 app.use(cors());
 require('dotenv').config();
+const path = require('path');
 
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
@@ -24,7 +25,7 @@ app.use(express.json());
 HTTP_PORT = process.env.PORT || 8080;
 
 app.get("/", (req,res) => {
-    res.send({message:"API Listening"});
+    res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 app.post("/api/movies", (req,res) => {
