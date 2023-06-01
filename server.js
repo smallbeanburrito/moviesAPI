@@ -59,6 +59,10 @@ app.delete("/api/movies/:id", (req,res) => {
     .catch(() => res.status(500).send("error deleting movie"));
 });
 
+app.use((req,res) => {
+    res.status(404).send(`<h1>404 <br>NOT FOUND</br></h1>`);
+})
+
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
     app.listen(HTTP_PORT, ()=>{
         console.log(`server listening on: ${HTTP_PORT}`);
